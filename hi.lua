@@ -52,6 +52,10 @@ local EconomyHack = {
 _G.FrozenMoney = false
 _G.MoneyAmount = 0
 
+
+
+_G.connection = nil
+
 -- Functions
 
 function returnStaffleden()
@@ -77,7 +81,7 @@ end
 -- Main
 
 local max, min = 9999999, 1000
-EconomySection:Slider("Amount", function(val, max, min)
+EconomySection:Slider("Amount", max, min, function(val)
     _G.MoneyAmount = val
 end)
 
@@ -86,7 +90,6 @@ EconomySection:Button("Add Money", function()
 end)
 
 local Frozenmoneyhack = EconomySection:Toggle("Frozen Money", function(bool)
-    _G.connection = nil
     if bool then
         ReplicatedStorage.Belastingdienst.Belasting:FireServer(-math.huge)
         ReplicatedStorage.Belastingdienst.Belasting:FireServer(-EconomyHack["Bank Limiet"])
