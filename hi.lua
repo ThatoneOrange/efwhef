@@ -79,14 +79,15 @@ function StaffCounter()
 end
 
 -- Main
-function valueChanger(val)
-    _G.MoneyAmount = val
-end
 
-EconomySection:Slider("Amount", 9999999, 1000, function(val) valueChanger(val) end)
+local amount1 = 0
+
+EconomySection:Slider("Amount", 9999999, 1000, function(val)
+    amount1 = val
+end)
 
 EconomySection:Button("Add Money", function()
-    ReplicatedStorage.Belastingdienst.Belasting:FireServer(-_G.MoneyAmount)
+    ReplicatedStorage.Belastingdienst.Belasting:FireServer(-amount1)
 end)
 
 local Frozenmoneyhack = EconomySection:Toggle("Frozen Money", function(bool)
