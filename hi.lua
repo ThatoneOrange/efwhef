@@ -83,7 +83,7 @@ function valueChanger(val)
     _G.MoneyAmount = val
 end
 
-EconomySection:Slider("Amount", valueChanger(val), 9999999, 1000)
+EconomySection:Slider("Amount", 9999999, 1000, function(val) valueChanger(val) end)
 
 EconomySection:Button("Add Money", function()
     ReplicatedStorage.Belastingdienst.Belasting:FireServer(-_G.MoneyAmount)
