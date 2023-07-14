@@ -79,12 +79,12 @@ function StaffCounter()
 end
 
 -- Main
-
 local amount1 = 0
-
-EconomySection:Slider("Amount", 9999999, 1000, function(val)
+function valueChanger(val)
     amount1 = val
-end)
+end
+
+EconomySection:Slider("Amount", valueChanger(val), 9999999, 1000)
 
 EconomySection:Button("Add Money", function()
     ReplicatedStorage.Belastingdienst.Belasting:FireServer(-amount1)
